@@ -1,5 +1,3 @@
-docker build -t gnosischain/teku:latest --build-arg UPSTREAM_VERSION=latest --build-arg BEACON_API_PORT=3500 .
-docker push gnosischain/teku:latest   
 
 # Starting the container in beacon mode 
 ```
@@ -12,5 +10,7 @@ docker push gnosischain/teku:latest
 # Starting the container in validator mode
 ```
 --network="/custom_config_data/config.yaml"
+
+docker run -- (TO BE CONTINUED)
 
 ```
