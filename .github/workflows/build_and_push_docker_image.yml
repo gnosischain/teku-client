@@ -3,6 +3,9 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
+    paths: 
+      - '**.sh'
+      - 'Dockerfile'
 
 jobs:
   push_to_registry:
