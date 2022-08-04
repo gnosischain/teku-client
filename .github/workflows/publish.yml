@@ -40,6 +40,6 @@ jobs:
           --tag gnosischain/teku:latest-${{ env.NETWORK }}
           -f Dockerfile
 
-      - run: >
+      - run: |
           docker push gnosischain/teku:${{ env.UPSTREAM_VERSION }}-${{ env.NETWORK }}
           docker push gnosischain/teku:latest-${{ env.NETWORK }}
