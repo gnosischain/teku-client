@@ -35,8 +35,11 @@ jobs:
       # {upstream_image}{testnet}{version_upstream}
       - run: >
           docker build .
-          --tag gnosischain/teku:${{ env.UPSTREAM_VERSION }}-${{ env.NETWORK }}
           --build-arg UPSTREAM_VERSION=${{ env.UPSTREAM_VERSION }}
+          --tag gnosischain/teku:${{ env.UPSTREAM_VERSION }}-${{ env.NETWORK }}
+          --tag gnosischain/teku:latest-${{ env.NETWORK }}
           -f Dockerfile
 
-      - run: docker push gnosischain/teku:${{ env.UPSTREAM_VERSION }}-${{ env.NETWORK }}
+      - run: >
+          docker push gnosischain/teku:${{ env.UPSTREAM_VERSION }}-${{ env.NETWORK }}
+          docker push gnosischain/teku:latest-${{ env.NETWORK }}
