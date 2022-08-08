@@ -1,0 +1,49 @@
+version: "3"
+services:
+  consensus:
+    image: gnosischain/teku:latest-chiado
+    restart: always
+    stop_grace_period: 1m
+    volumes:
+      - consensus-data:/var/lib/data
+      - ./jwtsecret:/jwtsecret
+      - ./validator-data:/validator-data
+    ports:
+      - 9000:9000/tcp
+      - 9000:9000/udp
+    command: >
+      --ee-jwt-secret-file /jwtsecret
+      --ee-endpoint http://execution:8551
+      --validators-proposer-default-fee-recipient ${FEE_RECIPIENT}
+      --validators-graffiti ${GRAFFITI}
+      --validator-keys "/validator-data/keys:/validator-data/secrets"
+      --data-path /var/lib/data
+      --rest-api-host-allowlist=*
+      --rest-api-enabled true
+      --rest-api-interface 0.0.0.0
+      --rest-api-port 4000
+      --p2p-port 9000
+
+  execution:
+    image: gnosischain/nethermind:latest-chiado
+    restart: always
+    stop_grace_period: 1m
+    volumes:
+      - execution-data:/var/lib/execution
+      - ./jwtsecret:/jwtsecret
+    ports:
+      - 30303:30303/tcp
+      - 30303:30303/udp
+    command: >
+      --JsonRpc.JwtSecretFile=/jwtsecret
+      --JsonRpc.AdditionalRpcUrls="http://localhost:8551|http;ws|net;eth;subscribe;engine;web3;client"
+      --JsonRpc.Enabled=true
+      --JsonRpc.EnabledModules="net,eth,consensus,subscribe,web3,admin,txpool"
+      --JsonRpc.Host=0.0.0.0
+      --datadir=/var/lib/execution
+      --Network.DiscoveryPort=30303
+      --Network.P2PPort=30303
+
+volumes:
+  consensus-data:
+  execution-data:
