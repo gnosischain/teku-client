@@ -1,0 +1,4 @@
+keystores
+docker-compose.build.yml
+jwtsecret
+validator-data
