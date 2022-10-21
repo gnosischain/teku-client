@@ -1,0 +1,3 @@
+[submodule "configs"]
+	path = configs
+	url = https://github.com/gnosischain/configs.git
