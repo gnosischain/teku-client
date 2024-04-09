@@ -1,6 +1,6 @@
 # DEPRECATED
 > [!WARNING]  
-> This is no longer supported as native Gnosis Chain support has been introduced. Please consider using the interactive guide provided in [documentation](https://docs.gnosischain.com/node/manual/).
+> This repository is no longer supported as native Gnosis Chain support has been introduced in the upstream. Please use the [official documentation](https://docs.gnosischain.com/node/manual/).
 
 # Teku Client - Docker
 
