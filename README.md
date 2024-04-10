@@ -1,3 +1,7 @@
+# DEPRECATED
+> [!WARNING]  
+> This repository is no longer supported as native Gnosis Chain support has been introduced in the upstream. Please use the [official documentation](https://docs.gnosischain.com/node/manual/).
+
 # Teku Client - Docker
 
 This projects builds a customized version of the Teku client with Gnosischain modifications. Those include the integrations with different testnets.
